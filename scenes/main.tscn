@@ -6,7 +6,6 @@
 [node name="main" type="Node2D"]
 
 [node name="philipTheSpider" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(200, 200)
-scale = Vector2(4, 4)
+position = Vector2(194, -65)
 
-[node name="TileMapLayer" parent="." instance=ExtResource("2_0wfyh")]
+[node name="tempwall" parent="." instance=ExtResource("2_0wfyh")]

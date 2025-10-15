@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
 var multiplier = 4
 var yStop = 250
+var yFixer = -350
 
 
 func _physics_process(delta: float) -> void:
@@ -14,15 +15,15 @@ func _physics_process(delta: float) -> void:
 	velocity += get_gravity()* delta*2
 	
 	# bounce back
-	if position.y > 200:
-		velocity.y -= position.y/20	
+	if position.y > 200+yFixer:
+		velocity.y -= position.y/10	
 		velocity.y /= 1.02
-	if position.y > 300:
-		velocity.y -= position.y/8
-	if position.y > 340:
-		velocity.y -= position.y/8
+	if position.y > 300+yFixer:
+		velocity.y -= position.y/4
+	if position.y > 320+yFixer:
+		velocity.y -= position.y
 		
-	if (position.y > 290 and position.y < 315) and abs(velocity.y) < 50:
+	if (position.y > 290+yFixer and position.y < 315+yFixer) and abs(velocity.y) < 50:
 		velocity.y /= 1.5
 
 
