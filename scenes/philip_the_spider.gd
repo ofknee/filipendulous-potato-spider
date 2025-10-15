@@ -8,7 +8,7 @@ var yStop = 250
 
 
 func _physics_process(delta: float) -> void:
-	print(velocity.y)
+	print("position.y", position.y, "\nvelocity.y",velocity.y)
 	
 	# add the gravity
 	velocity += get_gravity()* delta*2
@@ -16,11 +16,14 @@ func _physics_process(delta: float) -> void:
 	# bounce back
 	if position.y > 200:
 		velocity.y -= position.y/20	
-		velocity.y /= 1.01
+		velocity.y /= 1.02
 	if position.y > 300:
 		velocity.y -= position.y/8
 	if position.y > 340:
 		velocity.y -= position.y/8
+		
+	if (position.y > 290 and position.y < 315) and abs(velocity.y) < 50:
+		velocity.y /= 1.5
 
 
 

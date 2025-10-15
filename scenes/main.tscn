@@ -1,16 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=3 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ygaxbgqa8xd4" path="res://scenes/tiletest.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://bor7p2ghpfkll" path="res://scenes/philip_the_spider_rigid.tscn" id="2_sugp2"]
 
 [node name="main" type="Node2D"]
 
 [node name="philipTheSpider" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(200, 200)
 scale = Vector2(4, 4)
-
-[node name="philipTheRigidSpider" parent="." instance=ExtResource("2_sugp2")]
-position = Vector2(450, 200)
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_0wfyh")]
