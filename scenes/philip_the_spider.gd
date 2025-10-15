@@ -20,14 +20,14 @@ func _physics_process(delta: float) -> void:
 	
 	if position.y > 320:
 		if velocity.y > 0:
-			velocity.y -= (position.y - 320)*4
+			velocity.y -= (position.y - 320)*delta
 		if velocity.y > 0:
-			velocity.y += (position.y - 320)*4
+			velocity.y += (position.y - 320)*delta
 	if position.y < 320:
 		if velocity.y < 0:
-			velocity.y -= (320 - position.y)*4
+			velocity.y -= (320 - position.y)*delta
 		if velocity.y < 0:
-			velocity.y += (320 - position.y)*4
+			velocity.y += (320 - position.y)*delta
 
 	# Handle jump.
 	if Input.is_action_pressed("up"):
