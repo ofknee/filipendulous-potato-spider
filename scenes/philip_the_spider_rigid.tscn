@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bor7p2ghpfkll"]
+
+[ext_resource type="Script" uid="uid://cj7dljvt2x4ec" path="res://scenes/philip_the_spider_rigid.gd" id="1_t0mro"]
+[ext_resource type="Texture2D" uid="uid://in5sv1806wkj" path="res://assets/character/spider fp sprite.png" id="2_tma16"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_du51f"]
+radius = 14.0
+height = 44.0
+
+[node name="philipTheSpider" type="RigidBody2D"]
+freeze_mode = 1
+script = ExtResource("1_t0mro")
+
+[node name="spideyart" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_tma16")
+
+[node name="coll" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 206)
+shape = SubResource("CapsuleShape2D_du51f")

@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
+var multiplier = 4
+var yStop = 250
 
 
 func _physics_process(delta: float) -> void:
@@ -12,22 +14,27 @@ func _physics_process(delta: float) -> void:
 	velocity += get_gravity()* delta*2
 	
 	# bounce back
+	if position.y > 200:
+		velocity.y -= position.y/20	
+		velocity.y /= 1.01
 	if position.y > 300:
-		velocity.y -= position.y/10	
-	if position.y > 370:
-		velocity.y -= position.y/5
-	velocity.y += 1
+		velocity.y -= position.y/8
+	if position.y > 340:
+		velocity.y -= position.y/8
+
+
+
 	
-	if position.y > 320:
-		if velocity.y > 0:
-			velocity.y -= (position.y - 320)*delta
-		if velocity.y > 0:
-			velocity.y += (position.y - 320)*delta
-	if position.y < 320:
-		if velocity.y < 0:
-			velocity.y -= (320 - position.y)*delta
-		if velocity.y < 0:
-			velocity.y += (320 - position.y)*delta
+	#if position.y > yStop:
+		#if velocity.y > 0:
+			#velocity.y -= (position.y - 320)*delta*multiplier
+		#if velocity.y > 0:
+			#velocity.y += (position.y - 320)*delta*multiplier
+	#if position.y < yStop:
+		#if velocity.y < 0:
+			#velocity.y -= (320 - position.y)*delta*multiplier
+		#if velocity.y < 0:
+			#velocity.y += (320 - position.y)*delta*multiplier
 
 	# Handle jump.
 	if Input.is_action_pressed("up"):
