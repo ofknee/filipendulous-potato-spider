@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=10 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ygaxbgqa8xd4" path="res://scenes/tiletest.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://dxt7fnu5of2gn" path="res://assets/technical and other/spotlight-texture.jpg" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bvunejaggj1sy" path="res://scenes/projectiles.tscn" id="5_tbgi4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sugp2"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tefeu"]
+polygon = PackedVector2Array(-5, 113, -6, 113, -6, 114, -5, 114, -5, 116, -4, 116, -4, 118, -3, 118, -3, 121, -2, 121, -2, 122, 1, 122, 1, 121, 2, 121, 2, 118, 3, 118, 3, 116, 4, 116, 4, 114, 5, 114, 5, 113, 4, 113)
 
 [sub_resource type="Gradient" id="Gradient_sugp2"]
 offsets = PackedFloat32Array(0.18857142, 0.40761906, 0.60952383, 0.7619048, 1)
@@ -25,9 +29,23 @@ visible = false
 position = Vector2(508, 356)
 scale = Vector2(20.59375, 11.6796875)
 color = Color(1.6153606, 1.6153606, 1.6153606, 1)
-energy = 0.65
+energy = 0.15
 blend_mode = 1
 range_item_cull_mask = 0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+
+[node name="spotlight" type="PointLight2D" parent="."]
+position = Vector2(191, 38.000004)
+scale = Vector2(1.2316107, 1.2674743)
+energy = 0.37
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_filter = 1
+shadow_item_cull_mask = 3
+texture = ExtResource("4_jyhfs")
+offset = Vector2(0, 250.95)
 
 [node name="BooTempBg" type="Sprite2D" parent="."]
 light_mask = 2
@@ -40,23 +58,30 @@ texture = ExtResource("1_sugp2")
 [node name="philipTheSpider" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(194, -65)
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="philipTheSpider"]
+scale = Vector2(4, 4)
+occluder = SubResource("OccluderPolygon2D_tefeu")
+
 [node name="spider shadow" type="PointLight2D" parent="philipTheSpider"]
 position = Vector2(-7, 474.00003)
 scale = Vector2(3.990565, 4.1067677)
 energy = 0.52
 blend_mode = 1
 range_item_cull_mask = 2
+shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 5.6
 texture = SubResource("GradientTexture2D_jyhfs")
 
-[node name="spotlight shadow" type="PointLight2D" parent="philipTheSpider"]
+[node name="spotlight shadow (backup)" type="PointLight2D" parent="philipTheSpider"]
+visible = false
 position = Vector2(-1, 766)
 scale = Vector2(1.2277044, 1.2634543)
 energy = 0.42
 blend_mode = 1
 range_item_cull_mask = 2
+shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 5.6
@@ -65,12 +90,9 @@ texture = ExtResource("4_jyhfs")
 [node name="tempwall" parent="." instance=ExtResource("2_0wfyh")]
 light_mask = 4
 
-[node name="spotlight" type="PointLight2D" parent="."]
-position = Vector2(191, 356.00003)
+[node name="projectile motion parametrics" type="Node2D" parent="."]
+position = Vector2(191, 38.000004)
 scale = Vector2(1.2316107, 1.2674743)
-energy = 0.37
-range_item_cull_mask = 2
-shadow_color = Color(0, 0, 0, 1)
-shadow_filter = 1
-shadow_filter_smooth = 5.6
-texture = ExtResource("4_jyhfs")
+
+[node name="bullets" parent="projectile motion parametrics" instance=ExtResource("5_tbgi4")]
+position = Vector2(593.53174, 291.91913)
