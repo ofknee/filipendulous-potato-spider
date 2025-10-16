@@ -1,11 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=6 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ygaxbgqa8xd4" path="res://scenes/tiletest.tscn" id="2_0wfyh"]
 
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+offsets = PackedFloat32Array(0.18857142, 0.40761906, 0.60952383, 0.7619048, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.5152081, 0.5152081, 0.515208, 1, 0.17586905, 0.17586905, 0.17586905, 1, 0.048900172, 0.048900172, 0.048900172, 1, 0, 0, 0, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jyhfs"]
+gradient = SubResource("Gradient_sugp2")
+fill = 1
+fill_from = Vector2(0.51495725, 0.5277778)
+fill_to = Vector2(0.69871795, 0.77991456)
+
 [node name="main" type="Node2D"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(508, 356)
+scale = Vector2(20.59375, 11.6796875)
+color = Color(1.6153606, 1.6153606, 1.6153606, 1)
+energy = 0.65
+blend_mode = 1
+range_item_cull_mask = 0
+
+[node name="BooTempBg" type="Sprite2D" parent="."]
+modulate = Color(0.10880002, 0.20399994, 0.68, 1)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(578, 330)
+scale = Vector2(2, 2)
+texture = ExtResource("1_sugp2")
 
 [node name="philipTheSpider" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(194, -65)
 
+[node name="PointLight2D4" type="PointLight2D" parent="philipTheSpider"]
+position = Vector2(-5, 461.00003)
+scale = Vector2(3.990565, 4.1067677)
+energy = 1.62
+range_item_cull_mask = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 5.6
+texture = SubResource("GradientTexture2D_jyhfs")
+
 [node name="tempwall" parent="." instance=ExtResource("2_0wfyh")]
+light_mask = 4

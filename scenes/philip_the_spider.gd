@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
 var multiplier = 4
-var yStop = 250
+var yStop = 250   
 var yFixer = -350
 
 

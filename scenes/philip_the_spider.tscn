@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3l7ob1ifgoya"]
+[gd_scene load_steps=6 format=3 uid="uid://b3l7ob1ifgoya"]
 
 [ext_resource type="Script" uid="uid://rtbttijne2og" path="res://scenes/philip_the_spider.gd" id="1_1h5jv"]
 [ext_resource type="Texture2D" uid="uid://in5sv1806wkj" path="res://assets/character/spider fp sprite.png" id="1_du51f"]
@@ -6,6 +6,17 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_du51f"]
 radius = 12.0
 height = 38.0
+
+[sub_resource type="Gradient" id="Gradient_1h5jv"]
+offsets = PackedFloat32Array(0, 0.8896321)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1h5jv"]
+gradient = SubResource("Gradient_1h5jv")
+fill = 1
+fill_from = Vector2(0.51495725, 0.5277778)
+fill_to = Vector2(0.6474359, 0.8247863)
 
 [node name="philipTheSpider" type="CharacterBody2D"]
 script = ExtResource("1_1h5jv")
@@ -17,3 +28,23 @@ texture = ExtResource("1_du51f")
 [node name="coll" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 461)
 shape = SubResource("CapsuleShape2D_du51f")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-65, 430.00003)
+scale = Vector2(2.9189453, 3.0858397)
+energy = 1.41
+blend_mode = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 5.6
+texture = SubResource("GradientTexture2D_1h5jv")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(58, 470.00003)
+scale = Vector2(2.9189453, 3.0858397)
+energy = 1.41
+blend_mode = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 5.6
+texture = SubResource("GradientTexture2D_1h5jv")
