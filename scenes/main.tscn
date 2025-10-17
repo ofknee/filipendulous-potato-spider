@@ -58,7 +58,7 @@ texture = ExtResource("1_sugp2")
 [node name="philipTheSpider" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(194, -65)
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="philipTheSpider"]
+[node name="spotlight occluder" type="LightOccluder2D" parent="philipTheSpider"]
 scale = Vector2(4, 4)
 occluder = SubResource("OccluderPolygon2D_tefeu")
 
@@ -95,4 +95,5 @@ position = Vector2(191, 38.000004)
 scale = Vector2(1.2316107, 1.2674743)
 
 [node name="bullets" parent="projectile motion parametrics" instance=ExtResource("5_tbgi4")]
-position = Vector2(593.53174, 291.91913)
+position = Vector2(748.6132, 379.49487)
+disable_mode = 1
