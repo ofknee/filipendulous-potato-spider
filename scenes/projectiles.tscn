@@ -1,19 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvunejaggj1sy"]
+[gd_scene load_steps=5 format=3 uid="uid://bvunejaggj1sy"]
 
 [ext_resource type="Script" uid="uid://bhri55fmyv6lo" path="res://scenes/projectiles.gd" id="1_jb0is"]
 [ext_resource type="Texture2D" uid="uid://cyad52gq4s6du" path="res://assets/main/bullet.png" id="1_lh4qw"]
+[ext_resource type="Texture2D" uid="uid://bxtccwija56yj" path="res://assets/main/fly side.png" id="2_5v1oq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh4qw"]
-size = Vector2(7, 10)
+size = Vector2(13.5, 11)
 
 [node name="bullets" type="CharacterBody2D"]
 script = ExtResource("1_jb0is")
 
+[node name="FlySide" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_5v1oq")
+
 [node name="Bullet" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("1_lh4qw")
 
 [node name="coll" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_lh4qw")

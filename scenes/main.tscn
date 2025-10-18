@@ -89,7 +89,6 @@ shadow_filter_smooth = 5.6
 texture = ExtResource("4_jyhfs")
 
 [node name="tempwall" parent="." instance=ExtResource("2_0wfyh")]
-visible = false
 light_mask = 4
 
 [node name="projectile motion parametrics" type="Node2D" parent="."]
