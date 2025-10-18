@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=20 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dxt7fnu5of2gn" path="res://assets/technical and other/spotlight-texture.jpg" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bvunejaggj1sy" path="res://scenes/projectiles.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://d26y2crlultej" path="res://scenes/projectile_motion_parametrics.gd" id="5_tefeu"]
-[ext_resource type="Script" path="res://scenes/ui.gd" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://b8f5064robfnj" path="res://scenes/ui.gd" id="7_o6xl0"]
 [ext_resource type="Theme" uid="uid://ocofwm3pff0" path="res://assets/UI/theme.tres" id="8_tipki"]
+[ext_resource type="Script" uid="uid://ramn423ubayb" path="res://scenes/tutorial_panel.gd" id="9_85g3d"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sugp2"]
 
@@ -119,6 +120,7 @@ shadow_filter_smooth = 5.6
 texture = ExtResource("4_jyhfs")
 
 [node name="tempwall" parent="." instance=ExtResource("2_0wfyh")]
+visible = false
 light_mask = 4
 
 [node name="projectile motion parametrics" type="Node2D" parent="."]
@@ -152,6 +154,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -1153.0
+offset_top = -25.0
+offset_right = 6.0
+offset_bottom = 25.0
 grow_horizontal = 0
 value = 30.0
 nine_patch_stretch = true
@@ -168,6 +174,7 @@ anchor_bottom = 0.892
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_85g3d")
+script = ExtResource("9_85g3d")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Control/TutorialPanel"]
 layout_mode = 1
