@@ -5,10 +5,8 @@ class_name UI
 @export var tutorial_panel : Panel
 @export var restart_but : Button
 @export var end_panel : Panel
-const MAIN = preload("res://scenes/main.tscn")
 
 func _ready() -> void:
-	print(MAIN)
 	end_panel.hide()
 	restart_but.connect("pressed", _restart)
 
@@ -17,8 +15,8 @@ func show_end():
 	end_panel.show()
 
 func _restart():
-	get_tree().paused = true
-	get_tree().change_scene_to_packed(MAIN)
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func update_health(new_health:float):
 	health_bar.value = new_health

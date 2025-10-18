@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.x *=1.08
-	print("delta ", delta)
+	#print("delta ", delta)
 	if position.x < 50:
 		queue_free()
 	var collision = move_and_collide(Vector2(-400 * delta, 0))
