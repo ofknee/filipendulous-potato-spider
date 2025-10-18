@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Spider
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
@@ -8,8 +8,20 @@ var yStop = 250
 var yFixer = -350
 var locked_x: float
 
+@onready var ui = %UI as UI
+var health : float = 100.
+func damage(damage_amount:float):
+	health -= damage_amount
+	health = clamp(health, 0., 100.)
+	ui.update_health(health)
+	
+	if health == 0:
+		ui.show_end()
+		
+
 func _ready() -> void:
 	locked_x = position.x
+	damage(0.)
 
 func _physics_process(delta: float) -> void:
 	position.x=locked_x
