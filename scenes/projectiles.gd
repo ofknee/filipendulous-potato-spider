@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var spider
+var spider : Spider
 var spider_offset: int = 348 
 var averaging
 var screen_size: Vector2
@@ -7,7 +7,7 @@ var screen_size: Vector2
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	spider = get_node("../../philipTheSpider")
+	spider = get_node("../../philipTheSpider") as Spider
 	velocity.x = -1
 	position = Vector2(909, randf_range(0, screen_size.y))
 
@@ -21,6 +21,7 @@ func _physics_process(delta):
 	if collision:
 		if collision.get_collider().name == "philipTheSpider":
 			queue_free()
+			spider.damage(5.)
 
 
 
