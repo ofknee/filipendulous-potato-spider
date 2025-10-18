@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://eucp3fcxarvn" path="res://assets/UI/minecraftia/Minecraftia-Regular.ttf" id="1_14uak"]
 
-[sub_resource type="Image" id="Image_choun"]
+[sub_resource type="Image" id="Image_14uak"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -12,7 +12,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ya4ey"]
-image = SubResource("Image_choun")
+image = SubResource("Image_14uak")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb6dy"]
 content_margin_left = 4.0
