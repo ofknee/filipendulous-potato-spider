@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=23 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bvunejaggj1sy" path="res://scenes/projectiles.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://d26y2crlultej" path="res://scenes/projectile_motion_parametrics.gd" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://b8f5064robfnj" path="res://scenes/ui.gd" id="7_o6xl0"]
+[ext_resource type="FontFile" uid="uid://eucp3fcxarvn" path="res://assets/fonts/minecraftia/Minecraftia-Regular.ttf" id="8_tipki"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sugp2"]
 
@@ -37,6 +38,83 @@ colors = PackedColorArray(0.32260513, 0.52542573, 0.37789184, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ya4ey"]
 gradient = SubResource("Gradient_choun")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
+bg_color = Color(0.3019608, 0.35686275, 0.38431373, 0.45882353)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Image" id="Image_choun"]
+data = {
+"data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
+"format": "RGBA8",
+"height": 2,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ya4ey"]
+image = SubResource("Image_choun")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb6dy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="Theme" id="Theme_a8y0u"]
+default_font = ExtResource("8_tipki")
+RichTextLabel/colors/default_color = Color(0.8175509, 0.8705263, 0.900737, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/paragraph_separation = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/constants/strikethrough_alpha = 50
+RichTextLabel/constants/table_h_separation = 3
+RichTextLabel/constants/table_v_separation = 3
+RichTextLabel/constants/text_highlight_h_padding = 3
+RichTextLabel/constants/text_highlight_v_padding = 3
+RichTextLabel/constants/underline_alpha = 50
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 30
+RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_ya4ey")
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_eb6dy")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_trceg")
 
 [node name="main" type="Node2D"]
 
@@ -114,8 +192,10 @@ script = ExtResource("5_tefeu")
 [node name="bullets" parent="projectile motion parametrics" instance=ExtResource("5_tbgi4")]
 disable_mode = 1
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("health_bar")]
+unique_name_in_owner = true
 script = ExtResource("7_o6xl0")
+health_bar = NodePath("Control/HealthBar")
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -125,7 +205,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Control"]
+[node name="HealthBar" type="TextureProgressBar" parent="UI/Control"]
 layout_mode = 0
 offset_right = 665.0
 offset_bottom = 40.0
@@ -133,3 +213,28 @@ value = 30.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_85g3d")
 texture_progress = SubResource("GradientTexture1D_ya4ey")
+
+[node name="Panel" type="Panel" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.392
+anchor_top = 0.525
+anchor_right = 0.93
+anchor_bottom = 0.892
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_85g3d")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_a8y0u")
+bbcode_enabled = true
+text = "W to jump Phillip up a bit. Don't get shot by the bullets. Good luck!"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
