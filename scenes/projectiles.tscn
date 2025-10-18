@@ -13,8 +13,7 @@ script = ExtResource("1_jb0is")
 position = Vector2(0, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("1_lh4qw")
-flip_h = true
 
 [node name="coll" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0)
+position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_lh4qw")

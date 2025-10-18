@@ -6,13 +6,17 @@ const JUMP_VELOCITY = -300.0
 var multiplier = 4
 var yStop = 250   
 var yFixer = -350
+var locked_x: float
 
+func _ready() -> void:
+	locked_x = position.x
 
 func _physics_process(delta: float) -> void:
-	print("position.y", position.y, "\nvelocity.y",velocity.y)
+	position.x=locked_x
+	velocity.x = 0            
 	
 	# add the gravity
-	velocity += get_gravity()* delta*2
+	velocity += get_gravity()* delta*1.5
 	
 	# bounce back
 	if position.y > 200+yFixer:
@@ -42,8 +46,8 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_pressed("up"):
-		velocity.y = JUMP_VELOCITY
-		velocity += get_gravity()* delta * 0.5
+		velocity.y = JUMP_VELOCITY 
+		velocity += get_gravity()* delta 
 		
 #	if Input.is_action_pressed("down"):
 #		velocity.y = -JUMP_VELOCITY
