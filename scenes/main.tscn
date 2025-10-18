@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=16 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxt7fnu5of2gn" path="res://assets/technical and other/spotlight-texture.jpg" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bvunejaggj1sy" path="res://scenes/projectiles.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://d26y2crlultej" path="res://scenes/projectile_motion_parametrics.gd" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://b8f5064robfnj" path="res://scenes/ui.gd" id="7_o6xl0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sugp2"]
 
@@ -22,6 +23,20 @@ gradient = SubResource("Gradient_sugp2")
 fill = 1
 fill_from = Vector2(0.51495725, 0.5277778)
 fill_to = Vector2(0.5641026, 0.64102566)
+
+[sub_resource type="Gradient" id="Gradient_tipki"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.5518143, 0.5518144, 0.5518143, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_85g3d"]
+gradient = SubResource("Gradient_tipki")
+
+[sub_resource type="Gradient" id="Gradient_choun"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.32260513, 0.52542573, 0.37789184, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ya4ey"]
+gradient = SubResource("Gradient_choun")
 
 [node name="main" type="Node2D"]
 
@@ -98,3 +113,23 @@ script = ExtResource("5_tefeu")
 
 [node name="bullets" parent="projectile motion parametrics" instance=ExtResource("5_tbgi4")]
 disable_mode = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("7_o6xl0")
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Control"]
+layout_mode = 0
+offset_right = 665.0
+offset_bottom = 40.0
+value = 30.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_85g3d")
+texture_progress = SubResource("GradientTexture1D_ya4ey")
