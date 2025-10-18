@@ -14,6 +14,10 @@ func damage(damage_amount:float):
 	health -= damage_amount
 	health = clamp(health, 0., 100.)
 	ui.update_health(health)
+	
+	if health == 0:
+		ui.show_end()
+		
 
 func _ready() -> void:
 	locked_x = position.x

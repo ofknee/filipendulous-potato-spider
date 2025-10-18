@@ -21,7 +21,7 @@ func _physics_process(delta):
 	if collision:
 		if collision.get_collider().name == "philipTheSpider":
 			queue_free()
-			spider.damage(5.)
+			spider.damage(500.)
 
 
 
