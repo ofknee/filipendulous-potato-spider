@@ -12,7 +12,7 @@ func spawn_bullet():
 	var random_y = randf_range(0, screen_size.y)
 	bullet.position = Vector2(1000, random_y)
 	add_child(bullet)
-	time_keeper += 0.002
+	time_keeper += 0.005
 	
 func _process(delta):
 	if randf() < (0.05 * time_keeper):

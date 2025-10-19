@@ -27,15 +27,15 @@ fill_from = Vector2(0.51495725, 0.5277778)
 fill_to = Vector2(0.5641026, 0.64102566)
 
 [sub_resource type="Gradient" id="Gradient_tipki"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.5518143, 0.5518144, 0.5518143, 1)
+offsets = PackedFloat32Array(0.08791209, 0.86263734)
+colors = PackedColorArray(0.4720254, 0.47202516, 0.4720251, 1, 0.2177009, 0.2177011, 0.21770105, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_85g3d"]
 gradient = SubResource("Gradient_tipki")
 
 [sub_resource type="Gradient" id="Gradient_choun"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.32260513, 0.52542573, 0.37789184, 1)
+offsets = PackedFloat32Array(0, 0.31868133, 0.7087912)
+colors = PackedColorArray(0.53, 0.12190001, 0.12190001, 1, 0.67, 0.61193335, 0.23450002, 1, 0.16115782, 0.52213675, 0.29113954, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ya4ey"]
 gradient = SubResource("Gradient_choun")
@@ -48,11 +48,21 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
-bg_color = Color(0.2702219, 0.27022195, 0.27022177, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+bg_color = Color(0.3581995, 0.4074874, 0.43889084, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.20691353, 0.20691359, 0.20691338, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.40392157)
+shadow_size = 10
+shadow_offset = Vector2(-2.5, 8.43)
+anti_aliasing_size = 3.954
 
 [node name="main" type="Node2D"]
 
@@ -221,13 +231,21 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="UI/Control/EndScreen/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "time: xx.xx.xx"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
 [node name="Control" type="MarginContainer" parent="UI/Control/EndScreen/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 70
+theme_override_constants/margin_top = 180
 theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_bottom = -40
 
 [node name="RestartButton" type="Button" parent="UI/Control/EndScreen/VBoxContainer/Control"]
 layout_mode = 2
