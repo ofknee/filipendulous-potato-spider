@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=21 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b8f5064robfnj" path="res://scenes/ui.gd" id="7_o6xl0"]
 [ext_resource type="Theme" uid="uid://ocofwm3pff0" path="res://assets/UI/theme.tres" id="8_tipki"]
 [ext_resource type="Script" uid="uid://ramn423ubayb" path="res://scenes/tutorial_panel.gd" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://bhujiymbxhjed" path="res://assets/technical and other/redo.png" id="10_choun"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sugp2"]
 
@@ -232,12 +233,18 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="UI/Control/EndScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 bbcode_enabled = true
 text = "time: xx.xx.xx"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="Redo" type="Sprite2D" parent="UI/Control/EndScreen/VBoxContainer"]
+position = Vector2(411.2, 262.19998)
+scale = Vector2(4.1875, 4.1875)
+texture = ExtResource("10_choun")
 
 [node name="Control" type="MarginContainer" parent="UI/Control/EndScreen/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
