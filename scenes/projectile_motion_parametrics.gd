@@ -1,10 +1,12 @@
 extends Node2D
 
 @onready var bullet_scene = preload("res://scenes/projectiles.tscn")
+@onready var coin_scene = preload("res://scenes/coin.tscn")
 var time_keeper: float = 0.4
 
 func _ready():
 	spawn_bullet()
+	spawn_coin()
 
 func spawn_bullet():
 	var bullet = bullet_scene.instantiate()
@@ -14,8 +16,20 @@ func spawn_bullet():
 	add_child(bullet)
 	time_keeper += 0.005
 	
+func spawn_coin():
+	var coin = coin_scene.instantiate()
+	var screen_size = get_viewport_rect().size
+	var random_y = randf_range(0, screen_size.y)
+	coin.position = Vector2(1000, random_y)
+	add_child(coin)
+	time_keeper += 0.003
+
+	
 func _process(delta):
 	if randf() < (0.05 * time_keeper):
 		spawn_bullet()
+
+	if randf() < (0.02 * time_keeper):
+		spawn_coin()
 
 	

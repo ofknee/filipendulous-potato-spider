@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dhx8j6monnh74"]
+[gd_scene load_steps=22 format=3 uid="uid://dhx8j6monnh74"]
 
 [ext_resource type="PackedScene" uid="uid://b3l7ob1ifgoya" path="res://scenes/philip_the_spider.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cx8sqf0vp5lyd" path="res://assets/gen art/boo temp bg.png" id="1_sugp2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bvunejaggj1sy" path="res://scenes/projectiles.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://d26y2crlultej" path="res://scenes/projectile_motion_parametrics.gd" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://b8f5064robfnj" path="res://scenes/ui.gd" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b2r2iy66pfm5e" path="res://scenes/coin.tscn" id="7_ya4ey"]
 [ext_resource type="Theme" uid="uid://ocofwm3pff0" path="res://assets/UI/theme.tres" id="8_tipki"]
 [ext_resource type="Script" uid="uid://ramn423ubayb" path="res://scenes/tutorial_panel.gd" id="9_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bhujiymbxhjed" path="res://assets/technical and other/redo.png" id="10_choun"]
@@ -43,10 +44,13 @@ gradient = SubResource("Gradient_choun")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
 bg_color = Color(0.3019608, 0.35686275, 0.38431373, 0.45882353)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+border_color = Color(3.4659781, 3.4659781, 3.4659781, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.03649117, 0.10996627, 0.18951276, 0.38431373)
+shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0.3581995, 0.4074874, 0.43889084, 1)
@@ -80,7 +84,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 
 [node name="spotlight" type="PointLight2D" parent="."]
-position = Vector2(191, 38.000004)
+position = Vector2(191, 27)
 scale = Vector2(1.2316107, 1.2674743)
 energy = 0.37
 range_item_cull_mask = 2
@@ -141,6 +145,8 @@ script = ExtResource("5_tefeu")
 [node name="bullets" parent="projectile motion parametrics" instance=ExtResource("5_tbgi4")]
 disable_mode = 1
 
+[node name="coin" parent="." instance=ExtResource("7_ya4ey")]
+
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("health_bar", "tutorial_panel", "restart_but", "end_panel")]
 unique_name_in_owner = true
 process_mode = 3
@@ -155,6 +161,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 1.7999878
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_tipki")
@@ -178,10 +185,10 @@ texture_progress = SubResource("GradientTexture1D_ya4ey")
 [node name="TutorialPanel" type="Panel" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.392
-anchor_top = 0.525
-anchor_right = 0.93
-anchor_bottom = 0.892
+anchor_left = 0.443
+anchor_top = 0.702
+anchor_right = 0.935
+anchor_bottom = 0.942
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_85g3d")
@@ -195,16 +202,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_tipki")
+theme_override_constants/line_separation = -19
+theme_override_constants/paragraph_separation = -7
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "- space/click to climb up -
-philip' became a vegetarian for
+text = "space/click to climb up
+philip is being a vegetarian for
 halloween, help him avoid the flies!"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EndScreen" type="Panel" parent="UI/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
