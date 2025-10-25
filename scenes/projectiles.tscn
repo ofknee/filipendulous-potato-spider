@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cyad52gq4s6du" path="res://assets/main/bullet.png" id="1_lh4qw"]
 [ext_resource type="Texture2D" uid="uid://bxtccwija56yj" path="res://assets/main/fly side.png" id="2_5v1oq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh4qw"]
-size = Vector2(13.5, 11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v1oq"]
+size = Vector2(9, 10.5)
 
 [node name="bullets" type="CharacterBody2D"]
 script = ExtResource("1_jb0is")
@@ -21,6 +21,11 @@ position = Vector2(0, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("1_lh4qw")
 
-[node name="coll" type="CollisionShape2D" parent="."]
+[node name="coll" type="Area2D" parent="."]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_lh4qw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coll"]
+position = Vector2(-4, 1)
+shape = SubResource("RectangleShape2D_5v1oq")
+
+[connection signal="body_entered" from="coll" to="." method="_on_coll_body_entered"]

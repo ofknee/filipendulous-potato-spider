@@ -10,7 +10,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	velocity.x *=1.05
+	velocity.x *=1.08
 	#print("delta ", delta)
 	if position.x < 50:
 		queue_free()

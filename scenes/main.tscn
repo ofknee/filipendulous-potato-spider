@@ -37,7 +37,7 @@ gradient = SubResource("Gradient_tipki")
 
 [sub_resource type="Gradient" id="Gradient_choun"]
 offsets = PackedFloat32Array(0, 0.31868133, 0.7087912)
-colors = PackedColorArray(0.53, 0.12190001, 0.12190001, 1, 0.67, 0.61193335, 0.23450002, 1, 0.16115782, 0.52213675, 0.29113954, 1)
+colors = PackedColorArray(0.78, 0.023399977, 0.023399977, 1, 1, 0.91333336, 0.35000002, 1, 0, 0.66, 0.24199994, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ya4ey"]
 gradient = SubResource("Gradient_choun")
@@ -145,7 +145,8 @@ script = ExtResource("5_tefeu")
 [node name="bullets" parent="projectile motion parametrics" instance=ExtResource("5_tbgi4")]
 disable_mode = 1
 
-[node name="coin" parent="." instance=ExtResource("7_ya4ey")]
+[node name="coin" parent="projectile motion parametrics" instance=ExtResource("7_ya4ey")]
+scale = Vector2(0.8119449, 0.78897065)
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("health_bar", "tutorial_panel", "restart_but", "end_panel")]
 unique_name_in_owner = true
@@ -206,7 +207,7 @@ theme_override_constants/line_separation = -19
 theme_override_constants/paragraph_separation = -7
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "space/click to climb up
+text = "hold space/click to climb up
 philip is being a vegetarian for
 halloween, help him avoid the flies!"
 fit_content = true

@@ -3,25 +3,28 @@ var spider : Spider
 var spider_offset: int = 348 
 var averaging
 var screen_size: Vector2
+var acc
 
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	spider = get_node("../../philipTheSpider") as Spider
-	velocity.x = -1
-	position = Vector2(909, randf_range(0, screen_size.y))
+	velocity.x = randf()*-30
+	position = Vector2(909+50, randf_range(0, screen_size.y))
+	acc = randf()*5
 
 
 func _physics_process(delta):
-	velocity.x *=1.08
+	velocity.x -= acc
 	#print("delta ", delta)
 	if position.x < 50:
 		queue_free()
-	var collision = move_and_collide(Vector2(-400 * delta, 0))
-	if collision:
-		if collision.get_collider().name == "philipTheSpider":
-			queue_free()
-			spider.damage(5.)
+	move_and_slide()
+
+func _on_coll_body_entered(body: Node2D) -> void:
+	if body.name == "philipTheSpider": # Replace with function body.
+		spider.damage(5.0)
+		queue_free()
 
 
 
@@ -38,6 +41,4 @@ func _physics_process(delta):
 	#velocity = transform.x * Input.get_axis("down", "up") * speed
 
 	move_and_slide()
-	
-
 	
